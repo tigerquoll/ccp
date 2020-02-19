@@ -1,0 +1,44 @@
+{
+  "id": "58485407",
+  "name": "Dummy Chain A",
+  "parsers": [
+    {
+      "id": "123",
+      "name": "eventLog",
+      "type": "DelimitedText",
+      "config": {},
+      "input": "",
+      "outputs": []
+    },
+    {
+      "id": "456",
+      "name": "Asa",
+      "type": "Syslog",
+      "config": {},
+      "input": "",
+      "outputs": ["asa_tag", "asa_bar", "asa_foo"]
+    },
+    {
+      "id": "678",
+      "name": "My first Router",
+      "type": "RenameField",
+      "config": {
+        "matchingField": "asa_tag",
+        "routes": [
+          {
+            "name": "Name can identified by the User",
+            "matchingValue": "%ASA-7-609001",
+            "subchain": {}
+          },
+          {
+            "name": "Name can identified by the User #2",
+            "matchingValue": "%ASA-7-609002",
+            "subchain": {}
+          }
+        ]
+      },
+      "input": "",
+      "outputs": []
+    }
+  ]
+}
